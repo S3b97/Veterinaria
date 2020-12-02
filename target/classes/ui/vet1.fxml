@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="542.0" prefWidth="943.0" VBox.vgrow="ALWAYS">
+      <children>
+            <TextField fx:id="tfNombre" layoutX="126.0" layoutY="29.0" />
+            <TextField fx:id="tfPeso" layoutX="126.0" layoutY="80.0" />
+            <TextField fx:id="tfEdad" layoutX="126.0" layoutY="124.0" />
+            <Button fx:id="btNuevo" layoutX="19.0" layoutY="204.0" mnemonicParsing="false" onAction="#nuevaMascota" text="Nuevo" />
+            <Button fx:id="btGuardar" layoutX="15.0" layoutY="267.0" mnemonicParsing="false" onAction="#guardarMascota" text="Guardar" />
+            <Button fx:id="btModificar" layoutX="106.0" layoutY="204.0" mnemonicParsing="false" onAction="#modificarMascota" text="Modificar" />
+            <Button fx:id="btEliminar" layoutX="110.0" layoutY="267.0" mnemonicParsing="false" onAction="#eliminarMascota" text="Eliminar" />
+            <Label layoutX="18.0" layoutY="33.0" text="Nombre mascota" />
+            <Label layoutX="19.0" layoutY="84.0" text="Peso" />
+            <Label layoutX="18.0" layoutY="128.0" text="Edad mascota" />
+            <Label layoutX="316.0" layoutY="128.0" text="Tipo" />
+            <TableView fx:id="tvMascotas" layoutX="189.0" layoutY="162.0" prefHeight="210.0" prefWidth="450.0" />
+            <TextField fx:id="tfRaza" layoutX="379.0" layoutY="80.0" />
+            <Label layoutX="315.0" layoutY="84.0" text="Raza" />
+            <ChoiceBox fx:id="cbSexo" layoutX="378.0" layoutY="29.0" prefWidth="150.0" />
+            <Label layoutX="315.0" layoutY="33.0" text="Sexo" />
+            <ChoiceBox fx:id="cbTipo" layoutX="378.0" layoutY="124.0" prefWidth="150.0" />
+            <Label fx:id="lbEstado" layoutX="5.0" layoutY="343.0" text="Estado" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
