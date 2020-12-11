@@ -2,5 +2,7 @@ com\Miproyecto\proyectoAA\domain\Mascota.class
 com\Miproyecto\proyectoAA\util\R.class
 com\Miproyecto\proyectoAA\App.class
 com\Miproyecto\proyectoAA\AppController.class
+com\Miproyecto\proyectoAA\AppController$1.class
 com\Miproyecto\proyectoAA\util\AlertUtils.class
 com\Miproyecto\proyectoAA\VeterinariaDAO.class
+com\Miproyecto\proyectoAA\AppController$Accion.class

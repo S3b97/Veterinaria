@@ -16,10 +16,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+            AppController controller = new AppController();
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(R.getUI("vet1.fxml"));
-        loader.setController(new AppController());
+        loader.setController(controller);
         VBox vbox = loader.load();
+
+        controller.cargarDatos();
 
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
