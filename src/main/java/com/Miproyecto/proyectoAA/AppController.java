@@ -2,13 +2,20 @@ package com.Miproyecto.proyectoAA;
 
 import com.Miproyecto.proyectoAA.domain.Mascota;
 import com.Miproyecto.proyectoAA.util.AlertUtils;
+import com.Miproyecto.proyectoAA.util.R;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -31,7 +38,7 @@ public class AppController{
     public Label lbEstado;
     public ListView<Mascota> lvLista;
     public Button btNuevo, btModificar, btGuardar, btEliminar, btEliminarTodo;
-    private Mascota EliminarTodo;
+
 
     private  enum Accion {
         NUEVO, MODIFICAR
@@ -52,6 +59,28 @@ public class AppController{
     }catch (ClassNotFoundException cnfe){
         AlertUtils.mostrarError("Error al iniciar la aplicación");
     }
+    }
+
+    public void startLogin(Stage stage){
+
+        try {
+            UsuarioController startlogin = new UsuarioController();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(R.getUI("LoginAA.fxml"));
+        loader.setController(startlogin);
+            AnchorPane anchorPane = loader.load();
+
+            Scene scene = new Scene(anchorPane);
+            Stage nuevoStage = new Stage();
+            nuevoStage.initModality(Modality.WINDOW_MODAL);
+            nuevoStage.initOwner(stage);
+            nuevoStage.setScene(scene);
+            nuevoStage.showAndWait();
+
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
     }
 
     public void cargarDatos() {
@@ -116,23 +145,20 @@ public class AppController{
     @FXML
     private void eliminarTodo(Event event){
 
-
         try {
+            veterinariaDAO.eliminarTodo();
             Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmacion.setTitle("Eliminar Mascota");
+            confirmacion.setTitle("Eliminar Mascotas");
             confirmacion.setContentText("¿Estas seguro?");
             Optional<ButtonType> respuesta = confirmacion.showAndWait();
             if (respuesta.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE)
                 return;
-
-            veterinariaDAO.eliminarTodo();
-            lbEstado.setText("Mascota eliminada con éxito");
-
-            cargarDatos();
-        }catch (SQLException sqle){
-            AlertUtils.mostrarError("No se ha podido eliminar la mascota");
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
         }
 
+        lbEstado.setText("Mascotas eliminadas con éxito");
+            cargarDatos();
     }
 
         @FXML

@@ -1,6 +1,7 @@
 package com.Miproyecto.proyectoAA;
 
 import com.Miproyecto.proyectoAA.domain.Mascota;
+import com.Miproyecto.proyectoAA.domain.Usuario;
 import com.Miproyecto.proyectoAA.util.R;
 import com.mysql.cj.x.protobuf.MysqlxCrud;
 import javafx.scene.control.Alert;
@@ -48,14 +49,15 @@ public class VeterinariaDAO {
     }
 
     public void eliminarTodo() throws SQLException{
-        String sql = "DELETE * FROM mascotas WHERE nombre = not null";
+        String sql = "DELETE FROM mascotas";
+
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.executeUpdate();
 
     }
 
     public void eliminarMascota(Mascota mascota) throws SQLException {
-        String sql = "DELETE FROM mascotas WHERE id = ?";
+        String sql = "DELETE * FROM mascotas WHERE id = ?";
 
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, mascota.getId());
